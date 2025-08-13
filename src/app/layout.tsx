@@ -1,27 +1,25 @@
-import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
 import './globals.css'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { Providers } from './providers'
 
-const poppins = Poppins({
-  variable: '--font-poppins',
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'GitHub Project Creator',
-  description:
-    'An app to create customized GitHub projects with a single click.',
+  title: 'GH Project Creator',
+  description: 'Create customized GitHub projects with ease.',
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning className="dark">
+      <body className={`${inter.className} bg-gray-900  :text-white`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
